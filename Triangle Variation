@@ -1,0 +1,111 @@
+import pygame
+import random
+import time
+
+pygame.init()
+
+velocity_lim1 = -10
+velocity_lim2 = 10
+
+window_x = 1400
+window_y = 700
+
+window = pygame.display.set_mode((window_x,window_y))
+pygame.display.set_caption("wall collisions")
+
+velocity_x = random.randint(velocity_lim1,velocity_lim2)
+velocity_y = random.randint(velocity_lim1,velocity_lim2)
+
+velocity_a = random.randint(velocity_lim1,velocity_lim2)
+velocity_b = random.randint(velocity_lim1,velocity_lim2)
+
+velocity_c = random.randint(velocity_lim1,velocity_lim2)
+velocity_d = random.randint(velocity_lim1,velocity_lim2)
+
+velocity_e = random.randint(velocity_lim1,velocity_lim2)
+velocity_f = random.randint(velocity_lim1,velocity_lim2)
+
+radius = 10
+
+line_width = 2
+
+x = window_x/2
+y = window_y/2
+
+a = window_x/2
+b = window_y/2
+
+c = window_x/2
+d = window_y/2
+
+e = window_x/2
+f = window_y/2
+
+run = True
+while run:
+    pygame.time.delay(20)
+
+    x += velocity_x
+    y += velocity_y
+
+    a += velocity_a
+    b += velocity_b
+
+    c += velocity_c
+    d += velocity_d
+
+    e += velocity_e
+    f += velocity_f
+
+    if x > window_x - radius or x < radius:
+        velocity_x = -velocity_x
+        window.fill((0, 0, 0))
+
+    if y < radius or y > window_y - radius:
+        velocity_y = -velocity_y
+        #window.fill((0, 0, 0))
+
+    if a > window_x - radius or a < radius:
+        velocity_a = -velocity_a
+        #window.fill((0, 0, 0))
+
+    if b < radius or b > window_y - radius:
+        velocity_b = -velocity_b
+        #window.fill((0, 0, 0))
+
+    if c > window_x - radius or c < radius:
+        velocity_c = -velocity_c
+    #         #window.fill((0, 0, 0))
+    if d < radius or d > window_y - radius:
+        velocity_d = -velocity_d
+        #window.fill((0, 0, 0))
+
+    if e > window_x - radius or e < radius:
+        velocity_e = -velocity_e
+    #         #window.fill((0, 0, 0))
+    if f < radius or f > window_y - radius:
+        velocity_f = -velocity_f
+        window.fill((0, 0, 0))
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            run = False
+
+    #window.fill((0, 0, 0))
+
+    pygame.draw.line(window, (255, 255, 255), (x, y), (a, b), line_width)
+    pygame.draw.line(window, (255, 255, 255), (c, d), (a, b), line_width)
+    pygame.draw.line(window, (255, 255, 255), (x, y), (c, d), line_width)
+    #pygame.draw.line(window, (255, 255, 255), (x, y), (e, f), line_width)
+    #pygame.draw.line(window, (255, 255, 255), (c, d), (e, f), line_width)
+    #pygame.draw.line(window, (255, 255, 255), (a, b), (e,f), line_width)
+
+
+    #pygame.draw.circle(window, (0, 255, 0), (x, y), radius)
+    #pygame.draw.circle(window, (0, 0, 255), (a, b), radius)
+    #pygame.draw.circle(window, (255,0,0), (c,d), radius)
+    #pygame.draw.circle(window, (255,255,0), (e,f), radius)
+
+    pygame.display.update()
+
+pygame.quit
